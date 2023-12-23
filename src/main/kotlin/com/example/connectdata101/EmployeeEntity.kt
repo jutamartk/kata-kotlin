@@ -1,6 +1,8 @@
 package com.example.connectdata101
 
 import jakarta.persistence.Entity
+import jakarta.persistence.GeneratedValue
+import jakarta.persistence.GenerationType
 import jakarta.persistence.Id
 import org.hibernate.annotations.CreationTimestamp
 import org.hibernate.annotations.UpdateTimestamp
@@ -8,10 +10,11 @@ import java.sql.Date
 import java.sql.Timestamp
 import java.time.Instant
 
-@Entity
+@Entity(name = "employees")
 data class EmployeeEntity(
     @Id
-    var id:Number,
+    @GeneratedValue(strategy= GenerationType.AUTO)
+    var id:Long = 0,
 
     var firstName:String,
 

@@ -1,6 +1,7 @@
 package com.example.connectdata101
 
 import org.springframework.stereotype.Service
+import java.sql.Timestamp
 import java.time.Instant
 
 
@@ -25,5 +26,23 @@ class EmployeeService(
         )
     }
     //save employeeEntity to employeeRepository
+
+    fun getListOfEmployee(): List<EmployeeEntity> {
+        return employeeRepository.findAll()
+    }
+
+//    fun updateEmployee(id:Long, request: EmployeeRequest): EmployeeEntity{
+//       return employeeRepository.findById(id).map { data -> {
+//           data.firstName = request.firstName,
+//           data.lastName = request.lastName,
+//           data.email = request.email,
+//           data.department = request.department,
+//           data.salary = request.salary,
+//           data.hireDate = Timestamp,
+//
+//
+//
+//       }}
 }
+
 
