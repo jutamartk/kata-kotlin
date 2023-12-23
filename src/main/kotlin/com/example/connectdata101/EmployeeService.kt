@@ -27,17 +27,3 @@ class EmployeeService(
     //save employeeEntity to employeeRepository
 }
 
-data class EmployeeRequest(
-
-    var firstName:String,
-
-    var lastName: String,
-
-    var email: String,
-
-    var department: String,
-
-    var hireDate: String,
-
-    var salary: Double,
-)
