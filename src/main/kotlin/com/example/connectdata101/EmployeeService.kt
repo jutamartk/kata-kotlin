@@ -1,7 +1,6 @@
 package com.example.connectdata101
 
 import org.springframework.stereotype.Service
-import java.sql.Timestamp
 import java.time.Instant
 
 
@@ -31,18 +30,18 @@ class EmployeeService(
         return employeeRepository.findAll()
     }
 
-//    fun updateEmployee(id:Long, request: EmployeeRequest): EmployeeEntity{
-//       return employeeRepository.findById(id).map { data -> {
-//           data.firstName = request.firstName,
-//           data.lastName = request.lastName,
-//           data.email = request.email,
-//           data.department = request.department,
-//           data.salary = request.salary,
-//           data.hireDate = Timestamp,
-//
-//
-//
-//       }}
-}
+    fun updateEmployee(id:Long, request: EmployeeRequest): EmployeeEntity{
+       return employeeRepository.findById(id).map { existingEmployee -> existingEmployee.apply {
+           firstName = request.firstName
+           lastName = request.lastName
+           email = request.email
+           department = request.department
+           hireDate = Instant.parse(request.hireDate)
+           salary = request.salary
+           createDate = Instant.now()
+           updateDate = Instant.now() }
+           employeeRepository.save(existingEmployee)
+          }.orElseGet(error("not found employee id"))
+       }}
 
 
