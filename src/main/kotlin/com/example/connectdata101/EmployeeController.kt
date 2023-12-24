@@ -40,7 +40,7 @@ class EmployeeController(var employeeService: EmployeeService) {
 
     @PutMapping("/{id}")
     fun putEmployee(@PathVariable id:Long,
-                    @RequestBody request: EmployeeRequest): EmployeeEntity {
+                    @RequestBody request: EmployeeRequest): Optional<EmployeeEntity>? {
         return employeeService.updateEmployee(id, request)
     }
 
